@@ -6,8 +6,7 @@ public class PlayerScript : MonoBehaviour {
 	Rigidbody rigidbody;
 	float rotation = 0.0f;
 
-//	float baseSpeed = 10.0f;
-	float baseSpeed = 0.1f;
+	public float speed = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -16,11 +15,6 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float speed = baseSpeed;
-
-		if (Input.GetKey (KeyCode.LeftShift)) {
-			speed = baseSpeed*5;
-		}
 
 		float hor = 0;
 		float ver = 0;
@@ -39,7 +33,7 @@ public class PlayerScript : MonoBehaviour {
 
 		if (ver!=0 || hor!=0) {
 			transform.forward = Vector3.Normalize(new Vector3(hor, 0f, ver));
-			transform.Translate(Vector3.forward*Time.deltaTime*6f);
+			transform.Translate(Vector3.forward*Time.deltaTime*speed);
 		}
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
@@ -53,7 +47,7 @@ public class PlayerScript : MonoBehaviour {
 		Animator anim = GetComponent<Animator>();
 
 		if (Input.GetButtonDown ("Fire1")) {
-			anim.Play("Slash");
+			anim.SetTrigger("Attack");
 		}
 
 	}
