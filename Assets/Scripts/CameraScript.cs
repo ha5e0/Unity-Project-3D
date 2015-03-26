@@ -12,7 +12,7 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.LookAt(target.transform.position);
-		transform.position.Set (target.transform.position.x, target.transform.position.y, target.transform.position.z);
+		transform.LookAt(target.transform.position);
+		//transform.position.Set (target.transform.position.x, target.transform.position.y, target.transform.position.z);
 	}
 }

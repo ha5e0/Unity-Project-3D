@@ -3,14 +3,15 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	Rigidbody rigidbody;
 	float rotation = 0.0f;
 
 	public float speed = 1.0f;
 
+	public ParticleSystem smoke;
+	public GameObject bullet;
+
 	// Use this for initialization
 	void Start () {
-		rigidbody = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +38,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			rigidbody.AddForce(new Vector3(0,300.0f,0));
+			GetComponent<Rigidbody>().AddForce(new Vector3(0,300.0f,0));
 		}
 
 //		if (Input.GetKey (KeyCode.A)) {
@@ -47,7 +48,11 @@ public class PlayerScript : MonoBehaviour {
 		Animator anim = GetComponent<Animator>();
 
 		if (Input.GetButtonDown ("Fire1")) {
-			anim.SetTrigger("Attack");
+			anim.SetTrigger ("Attack");
+
+			smoke.Emit (1000);
+			Rigidbody bul;
+			bul = Instantiate (bullet, transform.position, transform.rotation) as Rigidbody;
 		}
 
 	}
