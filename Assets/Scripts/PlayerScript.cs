@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 
 	float rotation = 0.0f;
+	float fireCD = 0.0f;
 
 	public float speed = 1.0f;
 
@@ -47,12 +48,14 @@ public class PlayerScript : MonoBehaviour {
 
 		Animator anim = GetComponent<Animator>();
 
-		if (Input.GetButtonDown ("Fire1")) {
+		if (Input.GetButton ("Fire1") && fireCD<=Time.time) {
 			anim.SetTrigger ("Attack");
 
 			smoke.Emit (1000);
 			Rigidbody bul;
 			bul = Instantiate (bullet, transform.position, transform.rotation) as Rigidbody;
+
+			fireCD = Time.time + 1.5f;
 		}
 
 	}

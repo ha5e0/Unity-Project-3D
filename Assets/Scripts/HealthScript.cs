@@ -11,9 +11,6 @@ public class HealthScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		
-		//Destroy (other.gameObject);
-		//Destroy (gameObject);
 	}
  	
 	void OnTriggerExit(Collider other){    
@@ -23,9 +20,12 @@ public class HealthScript : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other) {
-		//BulletScript buls = other.
-		//Destroy (other.gameObject);
-		//Destroy (gameObject);
+		BulletScript obj = other.gameObject.GetComponent<BulletScript>();
+		if (obj!=null) {
+			health-=1;
+			if (health<=0) Destroy (gameObject);
+			Destroy (obj.gameObject, 0.1f);
+		}
 	}
 	
 	void OnCollisionExit(Collision other) {
