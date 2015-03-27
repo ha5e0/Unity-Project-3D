@@ -10,25 +10,27 @@ public class HealthScript : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	void OnTriggerEnter(Collider other) {
 		
-		Destroy (other.gameObject);Destroy (gameObject);
+		//Destroy (other.gameObject);
+		//Destroy (gameObject);
 	}
  	
-	void OnTriggerExit2D(Collider2D other){    
+	void OnTriggerExit(Collider other){    
 	}
 
-	void OnTriggerStay2D(Collider2D other){   
+	void OnTriggerStay(Collider other){   
 	}
 	
-	void OnCollisionEnter2D(Collision2D other) {
-		
-		Destroy (other.gameObject);Destroy (gameObject);
+	void OnCollisionEnter(Collision other) {
+		//BulletScript buls = other.
+		//Destroy (other.gameObject);
+		//Destroy (gameObject);
 	}
 	
-	void OnCollisionExit2D(Collision2D other) {
+	void OnCollisionExit(Collision other) {
 	}
 	
-	void OnCollisionStay2D(Collision2D other) {
+	void OnCollisionStay(Collision other) {
 	}
 }
